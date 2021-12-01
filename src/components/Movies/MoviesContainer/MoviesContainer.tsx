@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
 import { IMovieCard } from "../../../common/interfaces";
 import { moviesApi } from "../../../services";
+import { MovieCard } from "../MovieCard";
 import styles from "./style.module.scss";
 
 export const MoviesContainer = () => {
@@ -9,22 +10,17 @@ export const MoviesContainer = () => {
   const [movies, setMovies] = useState<IMovieCard[]>();
 
   useEffect(() => {
-    moviesApi.getMovies(page).then((res) => console.log(res));
-  }, []);
+    moviesApi.getMovies(page).then((res) => setMovies(res.results));
+  }, [page]);
+  console.log(movies);
   return (
-    <Grid container className={styles.moviesContainer}>
-      <Grid item xs={4}>
-        xs=8
-      </Grid>
-      <Grid item xs={4}>
-        xs=4
-      </Grid>
-      <Grid item xs={4}>
-        xs=4
-      </Grid>
-      <Grid item xs={4}>
-        xs=8
-      </Grid>
+    <Grid container spacing={5.625} className={styles.moviesContainer}>
+      {movies?.length &&
+        movies.map((movie) => (
+          <Grid item xs={4} key={movie.id}>
+            <MovieCard {...movie} />
+          </Grid>
+        ))}
     </Grid>
   );
 };

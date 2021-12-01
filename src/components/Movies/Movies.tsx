@@ -5,7 +5,7 @@ import { SearchInput } from "./SearchInput";
 export const Movies = () => {
   return (
     <div>
-      <Container maxWidth="xl">
+      <Container style={{ maxWidth: "1338px" }}>
         <SearchInput />
         <MoviesContainer />
       </Container>

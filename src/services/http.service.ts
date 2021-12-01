@@ -1,4 +1,4 @@
-import { HttpHeader, HttpMethod, ContentType } from "../common/enums/http";
+import { HttpHeader, HttpMethod, ContentType } from "../common/enums";
 import { HttpOptions } from "../common/types/http";
 
 class Http {

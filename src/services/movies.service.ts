@@ -8,7 +8,7 @@ class MovieApi {
 
   public async getMovies(page = 1): Promise<IMoviesResponse> {
     return this.http.load(
-      `${this.BASE}movie/popular?api_key=${this.API_KEY}&language=en-US&page=${page}`,
+      `${this.BASE}/popular?api_key=${this.API_KEY}&language=en-US&page=${page}`,
       {}
     );
   }
