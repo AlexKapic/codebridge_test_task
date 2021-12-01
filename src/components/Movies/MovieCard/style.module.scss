@@ -29,6 +29,8 @@
     font-size: 16px;
     line-height: 150%;
     color: #363636;
-    margin-right: 6px;
+    &_arrow {
+      margin-left: 6px;
+    }
   }
 }

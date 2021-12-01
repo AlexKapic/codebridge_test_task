@@ -44,8 +44,8 @@ export const MovieCard: React.FC<IMovieCard> = ({
             </Typography>
             <Link href="#" underline="none" className={styles.card_link}>
               Read more
+              <ArrowRight size={12} className={styles.card_link_arrow} />
             </Link>
-            <ArrowRight size={12} />
           </CardContent>
         </CardActionArea>
       </Card>

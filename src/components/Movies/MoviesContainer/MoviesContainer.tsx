@@ -12,7 +12,7 @@ export const MoviesContainer = () => {
   useEffect(() => {
     moviesApi.getMovies(page).then((res) => setMovies(res.results));
   }, [page]);
-  console.log(movies);
+
   return (
     <Grid container spacing={5.625} className={styles.moviesContainer}>
       {movies?.length &&

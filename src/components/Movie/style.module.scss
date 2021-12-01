@@ -1,0 +1,41 @@
+.movie {
+  &_backdrop {
+    width: 100%;
+    height: 245px;
+    background-size: cover;
+  }
+  &_container {
+    max-width: 1290px;
+    margin: 0 auto;
+  }
+  &_info {
+    margin-top: -95px;
+    margin-bottom: 35px;
+    padding: 35px 75px 50px 75px;
+    height: calc(100vh - 350px);
+    &_title {
+      font-family: Montserrat;
+      font-size: 24px;
+      line-height: 29px;
+      color: #363636;
+      margin-bottom: 50px;
+    }
+    &_description {
+      font-family: Montserrat;
+      font-size: 18px;
+      line-height: 150%;
+      color: #000000;
+    }
+  }
+  &_link {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150%;
+    color: #363636;
+    padding-left: 75px;
+    &_arrow {
+      margin-right: 6px;
+    }
+  }
+}
