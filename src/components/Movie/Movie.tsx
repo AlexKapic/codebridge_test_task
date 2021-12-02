@@ -17,6 +17,10 @@ export const Movie = () => {
   const movie = useAppSelector((state) => state.currentMovie);
   const isLoading = useAppSelector((state) => state.isLoading);
 
+  const backStyle = movie.backdrop_path
+    ? { backgroundImage: `url(${MovieImgUrl.backdrop}${movie.backdrop_path})` }
+    : {};
+
   useEffect(() => {
     movieId && dispatch(getMovie(movieId));
     return (): void => {
@@ -26,14 +30,7 @@ export const Movie = () => {
 
   return (
     <>
-      <div
-        className={styles.movie_backdrop}
-        style={
-          movie && {
-            backgroundImage: `url(${MovieImgUrl.backdrop}${movie?.backdrop_path})`,
-          }
-        }
-      />
+      <div className={styles.movie_backdrop} style={backStyle} />
       <Container className={styles.movie_container}>
         <Card className={styles.movie_info}>
           <CardContent>

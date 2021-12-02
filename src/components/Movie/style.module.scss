@@ -13,6 +13,11 @@
     margin-bottom: 35px;
     padding: 35px 75px 50px 75px;
     height: calc(100vh - 350px);
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
     &_title {
       font-family: Montserrat;
       font-size: 24px;
