@@ -52,7 +52,7 @@ export const SearchInput: React.FC<Props> = ({
       searchText.trim() !== searchQuery
     ) {
       debouncedSearch(searchText.trim());
-    } else if (!searchText.trim()?.length) {
+    } else if (!searchText.trim()?.length && searchQuery) {
       dispatch(getMovies());
       setSearchText("");
       setSearchQuery("");
