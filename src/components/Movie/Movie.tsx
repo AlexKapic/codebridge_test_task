@@ -2,20 +2,27 @@ import { Container, Link, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { ArrowLeft } from "akar-icons";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { getMovie } from "../../store/movies/actions";
+import { moviesActions } from "../../store/movies/slice";
 import { MovieImgUrl } from "../../common/enums";
-import { IMovieResponse } from "../../common/interfaces";
-import { moviesApi } from "../../services";
 import styles from "./style.module.scss";
+import { Spinner } from "../common/Spinner";
 
 export const Movie = () => {
   const { movieId } = useParams<string>();
-  const [movie, setMovie] = useState<IMovieResponse>();
+  const dispatch = useAppDispatch();
+  const movie = useAppSelector((state) => state.currentMovie);
+  const isLoading = useAppSelector((state) => state.isLoading);
 
   useEffect(() => {
-    movieId && moviesApi.getMovie(movieId).then((res) => setMovie(res));
-  }, [movieId]);
+    movieId && dispatch(getMovie(movieId));
+    return (): void => {
+      dispatch(moviesActions.resetMovie());
+    };
+  }, [movieId, dispatch]);
 
   return (
     <>
@@ -42,6 +49,7 @@ export const Movie = () => {
           <ArrowLeft size={12} className={styles.movie_link_arrow} />
           Back to homepage
         </Link>
+        {isLoading && <Spinner size={100} />}
       </Container>
     </>
   );
