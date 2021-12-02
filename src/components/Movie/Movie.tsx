@@ -1,15 +1,13 @@
-import { Container, Link, Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { ArrowLeft } from "akar-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import { ArrowLeft } from "akar-icons";
+import { Container, Link, Typography, Card, CardContent } from "@mui/material";
+import { Spinner } from "../common/Spinner";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { getMovie } from "../../store/movies/actions";
 import { moviesActions } from "../../store/movies/slice";
 import { MovieImgUrl } from "../../common/enums";
 import styles from "./style.module.scss";
-import { Spinner } from "../common/Spinner";
 
 export const Movie = () => {
   const { movieId } = useParams<string>();

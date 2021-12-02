@@ -1,5 +1,5 @@
-import Container from "@mui/material/Container";
 import { useState } from "react";
+import { Container } from "@mui/material";
 import { MoviesContainer } from "./MoviesContainer";
 import { SearchInput } from "./SearchInput";
 

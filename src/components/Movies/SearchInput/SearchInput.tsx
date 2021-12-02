@@ -1,16 +1,14 @@
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import { useDebouncedCallback } from "use-debounce";
-import styles from "./style.module.scss";
 import { useEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
+import { InputBase, Typography, Divider } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   DEBOUNCE_WAIT_MILLISECONDS,
   MINIMUM_QUERY_LENGTH_FOR_SEARCH,
 } from "../../../common/constants";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { getMovies, searchMovies } from "../../../store/movies/actions";
+import styles from "./style.module.scss";
 
 type Props = {
   searchQuery: string;

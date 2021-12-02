@@ -1,10 +1,9 @@
-import { Pagination } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { getMovies } from "../../../store/movies/actions";
+import { Pagination, Grid } from "@mui/material";
 import { Spinner } from "../../common/Spinner";
 import { MovieCard } from "../MovieCard";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { getMovies } from "../../../store/movies/actions";
 import styles from "./style.module.scss";
 
 type Props = {

@@ -1,15 +1,17 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import { Link as RouteLink } from "react-router-dom";
+import moment from "moment";
 import Highlighter from "react-highlight-words";
-import { CardActionArea } from "@mui/material";
+import { ArrowRight, Calendar } from "akar-icons";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+} from "@mui/material";
 import { MovieImgUrl } from "../../../common/enums";
 import { IMovieCard } from "../../../common/interfaces";
 import { MOVIE_OVERVIEW_LIMIT } from "../../../common/constants";
-import { ArrowRight, Calendar } from "akar-icons";
-import moment from "moment";
 import styles from "./style.module.scss";
 
 type Props = IMovieCard & { searchQuery: string[] };
