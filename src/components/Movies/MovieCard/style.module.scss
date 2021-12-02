@@ -11,17 +11,24 @@
     }
   }
   &_title {
+    display: block;
     height: 60px;
     font-family: Montserrat;
     font-size: 24px;
     line-height: 29px;
     color: #363636;
+    overflow: hidden;
+    margin-bottom: 20px;
   }
   &_content {
+    display: block;
+    height: 75px;
     font-family: Montserrat;
     font-size: 16px;
     line-height: 150%;
     color: #363636;
+    overflow: hidden;
+    margin-bottom: 20px;
   }
   &_link {
     font-family: Montserrat;

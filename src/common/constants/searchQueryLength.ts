@@ -1,0 +1,1 @@
+export const MINIMUM_QUERY_LENGTH_FOR_SEARCH = 3;

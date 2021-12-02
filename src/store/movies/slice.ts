@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IMovieResponse, IMoviesResponse } from "../../common/interfaces";
-import { getMovies, getMovie } from "./actions";
+import { getMovies, getMovie, searchMovies } from "./actions";
 import { ActionType } from "./actionsTypes";
 
 type State = {
@@ -43,6 +43,16 @@ const moviesApiSlice = createSlice({
         state.currentMovie = action.payload;
       })
       .addCase(getMovie.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(searchMovies.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(searchMovies.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.movies = action.payload;
+      })
+      .addCase(searchMovies.rejected, (state) => {
         state.isLoading = false;
       });
   },

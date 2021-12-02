@@ -2,24 +2,30 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import { Link as RouteLink } from "react-router-dom";
+import Highlighter from "react-highlight-words";
 import { CardActionArea } from "@mui/material";
 import { MovieImgUrl } from "../../../common/enums";
 import { IMovieCard } from "../../../common/interfaces";
+import { MOVIE_OVERVIEW_LIMIT } from "../../../common/constants";
 import { ArrowRight, Calendar } from "akar-icons";
 import moment from "moment";
 import styles from "./style.module.scss";
 
-export const MovieCard: React.FC<IMovieCard> = ({
+type Props = IMovieCard & { searchQuery: string[] };
+
+export const MovieCard: React.FC<Props> = ({
   id,
   title,
   poster_path: poster,
   release_date: date,
   overview,
+  searchQuery,
 }) => {
   const truncOverview =
-    overview.length > 100 ? overview.slice(0, 97) + "..." : overview;
+    overview.length > MOVIE_OVERVIEW_LIMIT
+      ? overview.slice(0, 97) + "..."
+      : overview;
 
   return (
     <RouteLink to={`${id}`} style={{ textDecoration: "none" }}>
@@ -36,16 +42,22 @@ export const MovieCard: React.FC<IMovieCard> = ({
               <Calendar size={13} className={styles.card_date_icon} />
               {moment(date).format("MMMM Do, YYYY")}
             </Typography>
-            <Typography paragraph className={styles.card_title}>
-              {title}
-            </Typography>
-            <Typography paragraph className={styles.card_content}>
-              {truncOverview}
-            </Typography>
-            <Link href="#" underline="none" className={styles.card_link}>
+            <Highlighter
+              className={styles.card_title}
+              searchWords={searchQuery}
+              autoEscape={true}
+              textToHighlight={title}
+            />
+            <Highlighter
+              className={styles.card_content}
+              searchWords={searchQuery}
+              autoEscape={true}
+              textToHighlight={truncOverview}
+            />
+            <Typography className={styles.card_link}>
               Read more
               <ArrowRight size={12} className={styles.card_link_arrow} />
-            </Link>
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Card>

@@ -3,6 +3,7 @@ enum ActionType {
   GET_MOVIE = "getMovie",
   RESET_MOVIES = "resetMovies",
   RESET_MOVIE = "resetMovie",
+  SEARCH_MOVIES = "searchMovies",
 }
 
 export { ActionType };

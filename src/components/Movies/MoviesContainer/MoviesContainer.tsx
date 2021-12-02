@@ -6,11 +6,17 @@ import { Spinner } from "../../common/Spinner";
 import { MovieCard } from "../MovieCard";
 import styles from "./style.module.scss";
 
-export const MoviesContainer = () => {
+type Props = {
+  searchQuery: string;
+};
+
+export const MoviesContainer: React.FC<Props> = ({ searchQuery }) => {
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
   const movies = useAppSelector((state) => state.movies.results);
   const isLoading = useAppSelector((state) => state.isLoading);
+
+  const query = searchQuery.split(" ");
 
   useEffect(() => {
     dispatch(getMovies(page));
@@ -19,10 +25,10 @@ export const MoviesContainer = () => {
   return (
     <>
       <Grid container spacing={5.625} className={styles.moviesContainer}>
-        {movies?.length &&
+        {movies &&
           movies.map((movie) => (
-            <Grid item xs={4} key={movie.id}>
-              <MovieCard {...movie} />
+            <Grid item lg={4} md={6} sm={6} xs={12} key={movie.id}>
+              <MovieCard {...movie} searchQuery={query} />
             </Grid>
           ))}
         {isLoading && <Spinner size={100} />}
