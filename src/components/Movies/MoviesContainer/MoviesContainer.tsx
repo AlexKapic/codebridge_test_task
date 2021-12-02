@@ -1,3 +1,4 @@
+import { Pagination } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
@@ -13,10 +14,16 @@ type Props = {
 export const MoviesContainer: React.FC<Props> = ({ searchQuery }) => {
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
-  const movies = useAppSelector((state) => state.movies.results);
+  const { results: movies, total_pages: pages } = useAppSelector(
+    (state) => state.movies
+  );
   const isLoading = useAppSelector((state) => state.isLoading);
 
   const query = searchQuery.split(" ");
+
+  const handlePaginate = (e: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
 
   useEffect(() => {
     dispatch(getMovies(page));
@@ -33,6 +40,14 @@ export const MoviesContainer: React.FC<Props> = ({ searchQuery }) => {
           ))}
         {isLoading && <Spinner size={100} />}
       </Grid>
+      <Pagination
+        className={styles.pagination}
+        count={pages}
+        page={page}
+        onChange={handlePaginate}
+        size="large"
+        color="primary"
+      />
     </>
   );
 };
