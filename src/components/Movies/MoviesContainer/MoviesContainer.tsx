@@ -31,7 +31,7 @@ export const MoviesContainer: React.FC<Props> = ({ searchQuery }) => {
   return (
     <>
       <Grid container spacing={5.625} className={styles.moviesContainer}>
-        {movies &&
+        {!!movies?.length &&
           movies.map((movie) => (
             <Grid item lg={4} md={6} sm={6} xs={12} key={movie.id}>
               <MovieCard {...movie} searchQuery={query} />
@@ -39,14 +39,16 @@ export const MoviesContainer: React.FC<Props> = ({ searchQuery }) => {
           ))}
         {isLoading && <Spinner size={100} />}
       </Grid>
-      <Pagination
-        className={styles.pagination}
-        count={pages}
-        page={page}
-        onChange={handlePaginate}
-        size="large"
-        color="primary"
-      />
+      {!!movies?.length && (
+        <Pagination
+          className={styles.pagination}
+          count={pages}
+          page={page}
+          onChange={handlePaginate}
+          size="large"
+          color="primary"
+        />
+      )}
     </>
   );
 };
