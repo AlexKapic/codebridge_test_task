@@ -1,4 +1,4 @@
-# Codebridge test task
+# Frontend test task
 
 ## You need to build Single Page Application with React.
 
